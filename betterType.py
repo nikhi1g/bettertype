@@ -70,7 +70,7 @@ def get_three_digit_milliseconds():
     i = datetime.datetime.now()
 
 
-def on_press(key):
+def on_press(key): #mainstuffoccurshere
     global recorder, last_char, second_to_last_char, diff, count, Enable_Keyboard_Hotkeys
     if key == keyboard.Key.esc:
         return False
@@ -85,9 +85,8 @@ def on_press(key):
             recorder = ""
             recorder += temp_char
         get_three_digit_milliseconds()
-        test_print()
-        if second_to_last_char == last_char:
-            print('tripped')
+        # test_print()
+
         if Enable_Keyboard_Hotkeys:
 
             if second_to_last_char == last_char and int(diff) < 190:
@@ -153,14 +152,17 @@ def on_press(key):
 
 
 def test_print():
-    global recorder
-    print(recorder, "\t" + last_char, "\t" + last_char)
+    global recorder, last_char, second_to_last_char
+    print(recorder, "\t" + second_to_last_char, "\t" + last_char)
+    if second_to_last_char == last_char:
+        print('tripped')
+
+def start_main(): #starts everything
+    Thread(target=millitimer).start()
+    start_keyboard()
 
 
-Thread(target=millitimer).start()
-start_keyboard()
-
-
-
+if __name__ == "__main__":
+    start_main()
 
 
