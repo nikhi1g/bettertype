@@ -136,6 +136,16 @@ def on_press(key): #mainstuffoccurshere
                     p.hotkey('ctrl', 'shift', 'r')
                     sleep(0.5)
                     p.hotkey('ctrl', 'shift', 'r')
+                elif last_char == "c":
+                    clear()
+                    p.hotkey('command', 'c')
+                elif last_char == "v":
+                    clear()
+                    p.hotkey('command','v') 
+                elif last_char == "k":
+                    clear()
+                    sleep(0.5)
+                    os.system("python3 /Users/nikhil/Desktop/pgui/pyautoguilog.py")
 
     except Exception as e:
 
@@ -144,7 +154,7 @@ def on_press(key): #mainstuffoccurshere
             print('enabled')
 
 
-        elif key == keyboard.Key.shift_r:
+        elif key == keyboard.Key.alt_r:
             Enable_Keyboard_Hotkeys = False
             print('disabled')
 
